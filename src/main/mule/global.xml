@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+	<configuration-properties doc:name="Configuration properties" doc:id="1223e915-37fe-4f1c-b62b-ea58daad1886" file="properties/app.properties" />
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="b88b7ab2-fa7c-4c47-85bf-fb11f624b3fd" >
+		<salesforce:jwt-connection consumerKey="${int196.consumerKey}" keyStore="${int196.sfdc.jks.classpath}" storePassword="${int196.sfdc.jks.password}" principal="${int196.sfdc.username}" tokenEndpoint="${int196.sfdc.jwt.tokenEndpoint}" />
+	
+</salesforce:sfdc-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="d826547d-bd9c-4216-88be-7cc3886cbe2b" >
+		<http:request-connection host="${sf.request_token.host}" protocol="HTTPS"/>
+	</http:request-config>
+	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="34dd034e-f077-4978-87e9-c04954581229" >
+		<http:request-connection protocol="HTTPS" host="${sf.request_data.host}" />
+	</http:request-config>
+	<api-gateway:autodiscovery apiId="${int196.api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="0a639966-df78-4b1b-a13d-eb77fbde46cd" flowRef="implementationFlow" />
+</mule>

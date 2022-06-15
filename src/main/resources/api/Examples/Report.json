@@ -1,0 +1,259 @@
+{
+    "attributes": {
+        "describeUrl": "/services/data/v49.0/analytics/reports/00O8d000002tygIEAQ/describe",
+        "instancesUrl": "/services/data/v49.0/analytics/reports/00O8d000002tygIEAQ/instances",
+        "reportId": "00O8d000002tygIEAQ",
+        "reportName": "Demo",
+        "type": "Report"
+    },
+    "allData": true,
+    "factMap": {
+        "T!T": {
+            "aggregates": [
+                {
+                    "label": "0",
+                    "value": 0
+                }
+            ],
+            "rows": []
+        }
+    },
+    "groupingsAcross": {
+        "groupings": []
+    },
+    "groupingsDown": {
+        "groupings": []
+    },
+    "hasDetailRows": true,
+    "picklistColors": {},
+    "reportExtendedMetadata": {
+        "aggregateColumnInfo": {
+            "RowCount": {
+                "dataType": "int",
+                "label": "Record Count"
+            }
+        },
+        "availableDashboardSettings": null,
+        "detailColumnInfo": {
+            "SITE": {
+                "dataType": "string",
+                "entityColumnName": "Account.Site",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": false,
+                "label": "Account Site",
+                "uniqueCountable": true
+            },
+            "CREATED_ALIAS": {
+                "dataType": "string",
+                "entityColumnName": "User.Alias",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": true,
+                "label": "Created Alias",
+                "uniqueCountable": true
+            },
+            "CREATED": {
+                "dataType": "string",
+                "entityColumnName": "User.Name",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": true,
+                "label": "Created By",
+                "uniqueCountable": true
+            },
+            "ALIAS": {
+                "dataType": "string",
+                "entityColumnName": "User.Alias",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": true,
+                "label": "Account Owner Alias",
+                "uniqueCountable": true
+            },
+            "DUE_DATE": {
+                "dataType": "date",
+                "entityColumnName": "Account.LastActivityDate",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": false,
+                "label": "Last Activity",
+                "uniqueCountable": true
+            },
+            "USERS.NAME": {
+                "dataType": "string",
+                "entityColumnName": "User.Name",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": true,
+                "label": "Account Owner",
+                "uniqueCountable": true
+            },
+            "ACCOUNT.NAME": {
+                "dataType": "string",
+                "entityColumnName": "Account.Name",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": true,
+                "label": "Account Name",
+                "uniqueCountable": true
+            },
+            "ADDRESS1_STATE": {
+                "dataType": "string",
+                "entityColumnName": "Account.BillingAddress",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": false,
+                "label": "Billing State/Province",
+                "uniqueCountable": true
+            },
+            "TYPE": {
+                "dataType": "picklist",
+                "entityColumnName": "Account.Type",
+                "filterValues": [
+                    {
+                        "apiName": "Prospect",
+                        "label": "Prospect",
+                        "name": "Prospect"
+                    },
+                    {
+                        "apiName": "Customer - Direct",
+                        "label": "Customer - Direct",
+                        "name": "Customer - Direct"
+                    },
+                    {
+                        "apiName": "Customer - Channel",
+                        "label": "Customer - Channel",
+                        "name": "Customer - Channel"
+                    },
+                    {
+                        "apiName": "Channel Partner / Reseller",
+                        "label": "Channel Partner / Reseller",
+                        "name": "Channel Partner / Reseller"
+                    },
+                    {
+                        "apiName": "Installation Partner",
+                        "label": "Installation Partner",
+                        "name": "Installation Partner"
+                    },
+                    {
+                        "apiName": "Technology Partner",
+                        "label": "Technology Partner",
+                        "name": "Technology Partner"
+                    },
+                    {
+                        "apiName": "Other",
+                        "label": "Other",
+                        "name": "Other"
+                    }
+                ],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": false,
+                "label": "Type",
+                "uniqueCountable": true
+            },
+            "RATING": {
+                "dataType": "picklist",
+                "entityColumnName": "Account.Rating",
+                "filterValues": [
+                    {
+                        "apiName": "Hot",
+                        "label": "Hot",
+                        "name": "Hot"
+                    },
+                    {
+                        "apiName": "Warm",
+                        "label": "Warm",
+                        "name": "Warm"
+                    },
+                    {
+                        "apiName": "Cold",
+                        "label": "Cold",
+                        "name": "Cold"
+                    }
+                ],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": false,
+                "label": "Rating",
+                "uniqueCountable": true
+            },
+            "LAST_UPDATE": {
+                "dataType": "date",
+                "entityColumnName": "Account.LastModifiedDate",
+                "filterValues": [],
+                "filterable": true,
+                "inactiveFilterValues": [],
+                "isLookup": false,
+                "label": "Last Modified Date",
+                "uniqueCountable": true
+            }
+        },
+        "groupingColumnInfo": {}
+    },
+    "reportMetadata": {
+        "aggregates": [
+            "RowCount"
+        ],
+        "chart": null,
+        "crossFilters": [],
+        "currency": null,
+        "dashboardSetting": null,
+        "description": null,
+        "detailColumns": [
+            "SITE",
+            "CREATED_ALIAS",
+            "CREATED",
+            "ALIAS",
+            "DUE_DATE",
+            "USERS.NAME",
+            "ACCOUNT.NAME",
+            "ADDRESS1_STATE",
+            "TYPE",
+            "RATING",
+            "LAST_UPDATE"
+        ],
+        "developerName": "New_Accounts_Report_qTp",
+        "division": null,
+        "folderId": "0058d000002OEJMAA4",
+        "groupingsAcross": [],
+        "groupingsDown": [],
+        "hasDetailRows": true,
+        "hasRecordCount": true,
+        "historicalSnapshotDates": [],
+        "id": "00O8d000002tygIEAQ",
+        "name": "Demo",
+        "presentationOptions": {
+            "hasStackedSummaries": true
+        },
+        "reportBooleanFilter": null,
+        "reportFilters": [],
+        "reportFormat": "TABULAR",
+        "reportType": {
+            "label": "Accounts",
+            "type": "AccountList"
+        },
+        "scope": "user",
+        "showGrandTotal": true,
+        "showSubtotals": true,
+        "sortBy": [],
+        "standardDateFilter": {
+            "column": "CREATED_DATE",
+            "durationValue": "CUSTOM",
+            "endDate": null,
+            "startDate": "2022-05-12"
+        },
+        "standardFilters": null,
+        "supportsRoleHierarchy": false,
+        "userOrHierarchyFilterId": null
+    }
+}
