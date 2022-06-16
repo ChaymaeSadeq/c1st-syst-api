@@ -8,10 +8,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
 http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
 	<configuration-properties doc:name="Configuration properties" doc:id="1223e915-37fe-4f1c-b62b-ea58daad1886" file="properties/app.properties" />
-	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="b88b7ab2-fa7c-4c47-85bf-fb11f624b3fd" >
-		<salesforce:jwt-connection consumerKey="${int196.consumerKey}" keyStore="${int196.sfdc.jks.classpath}" storePassword="${int196.sfdc.jks.password}" principal="${int196.sfdc.username}" tokenEndpoint="${int196.sfdc.jwt.tokenEndpoint}" />
-	
-</salesforce:sfdc-config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="d826547d-bd9c-4216-88be-7cc3886cbe2b" >
 		<http:request-connection host="${sf.request_token.host}" protocol="HTTPS"/>
 	</http:request-config>
@@ -19,4 +15,11 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 		<http:request-connection protocol="HTTPS" host="${sf.request_data.host}" />
 	</http:request-config>
 	<api-gateway:autodiscovery apiId="${int196.api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="0a639966-df78-4b1b-a13d-eb77fbde46cd" flowRef="implementationFlow" />
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="2aad10f1-90b2-4b05-9479-4eb67f6ec508" >
+		<salesforce:jwt-connection consumerKey="${int196.consumerKey}" keyStore="${int196.sfdc.jks.classpath}" storePassword="${int196.sfdc.jks.password}" principal="${int196.sfdc.username}" tokenEndpoint="${int196.sfdc.jwt.tokenEndpoint}" />
+	</salesforce:sfdc-config>
+	<salesforce:sfdc-config name="Salesforce_Config1" doc:name="Salesforce Config" doc:id="ddc288ee-7120-4cf5-89b3-86d16a7f3e11" >
+		<salesforce:jwt-connection consumerKey="3MVG9DREgiBqN9WnMpsYfEXDyEFGyS9nBfnc_JXiHAOPBz1VCeD_kBOcaGiaHLjvohe9I4jNh0ZG4OG2W.A4." keyStore="jks/00D8d000002dUDS.jks" storePassword="password" principal="csadeq@deloitte.fr" />
+	</salesforce:sfdc-config>
+
 </mule>

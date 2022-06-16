@@ -7,32 +7,21 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<flow name="implementationFlow" doc:id="ea50dda4-fb8c-4e13-9178-5ce149805749" >
-		<ee:transform doc:name="Transform Message" doc:id="1824088f-d933-41ea-8baf-9aaa7bf55982" >
-			<ee:message >
+		<ee:transform doc:name="Transform Message" doc:id="1824088f-d933-41ea-8baf-9aaa7bf55982">
+			<ee:message>
 			</ee:message>
-			<ee:variables >
-				<ee:set-variable variableName="query" ><![CDATA[%dw 2.0
+			<ee:variables>
+				<ee:set-variable variableName="query"><![CDATA[%dw 2.0
 output application/java
 ---
 "select Id from Report where Name='" ++ attributes.uriParams.'name' ++ "'"]]></ee:set-variable>
 			</ee:variables>
 		</ee:transform>
-		<salesforce:query doc:name="Query" doc:id="f3fae052-655d-4a4a-a8c1-b3b7e1faac4f" config-ref="Salesforce_Config">
+		<salesforce:query doc:name="Query" doc:id="7b4e0e4d-7459-429a-a7e8-6c02664afbea" config-ref="Salesforce_Config1">
 			<salesforce:salesforce-query ><![CDATA[#[vars.query]]]></salesforce:salesforce-query>
 		</salesforce:query>
-		<set-variable value='#[payload.Id joinBy""]' doc:name="Set Variable" doc:id="c6ce42b1-58b0-452d-a0f1-fd02134012a2" variableName="report_id"/>
+		<set-variable value='#[payload.Id joinBy""]' doc:name="Set Variable" doc:id="c6ce42b1-58b0-452d-a0f1-fd02134012a2" variableName="report_id" />
 		<logger level="INFO" doc:name="Id Logger" doc:id="9aea0144-a81f-44c0-aff6-02de82125a15" message="#[vars.report_id]" />
-		<ee:transform doc:name="Transform Message" doc:id="7d3f9b1e-d0c4-4b17-90bb-cd697bd24d5e" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
-output application/json
----
-vars.report_id]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
-	
-</flow>
-	<flow name="implementationFlow1" doc:id="4f15ed7d-7bc9-40c0-89bb-9aa2388bf0fd" >
 		<http:request method="POST" doc:name="Get Token" doc:id="647831d2-baea-4f4d-a97d-6bee12bb482d" config-ref="HTTP_Request_configuration" path="/services/oauth2/token">
 			<http:body><![CDATA[#[%dw 2.0
 output application/x-www-form-urlencoded
@@ -47,13 +36,20 @@ import p from Mule
 	}]]]></http:body>
 		</http:request>
 		<set-variable value="#[payload.access_token]" doc:name="Token" doc:id="5c279e92-57ed-4f6c-bb81-093fb6c56580" variableName="token" />
-		<http:request method="GET" doc:name="Get Data" doc:id="5ad33e3e-6e0e-4839-8dca-61255f17bb75" path='#["/services/data/v49.0/analytics/reports/" ++ vars.report_id]' config-ref="HTTP_Request_configuration1">
+		<try doc:name="Try" doc:id="5b5cea00-5bf4-41e9-98c6-0e538fad61da" >
+			<http:request method="GET" doc:name="Get Data" doc:id="5ad33e3e-6e0e-4839-8dca-61255f17bb75" path='#["/services/data/v49.0/analytics/reports/" ++ vars.report_id]' config-ref="HTTP_Request_configuration1">
 			<http:headers><![CDATA[#[output application/json
 ---
 {
 	"Authorization" : "Bearer " ++ vars.token
 }]]]></http:headers>
 		</http:request>
+			<error-handler >
+				<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="d051295e-d858-4d38-acd8-9f4927f86186" type="ANY">
+					<set-payload value="No such report name existing" doc:name="Set Payload" doc:id="f4523649-fe6f-4e3f-8e7c-66997d9bb557" />
+				</on-error-propagate>
+			</error-handler>
+		</try>
 		<ee:transform doc:name="Transform Message" doc:id="54fdb82e-5f1f-4e82-b81b-55373422cd81">
 			<ee:message>
 				<ee:set-payload><![CDATA[%dw 2.0
@@ -62,6 +58,7 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-	</flow>
+	
+</flow>
 
 </mule>
